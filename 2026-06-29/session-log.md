@@ -55,3 +55,35 @@ All patched in Django 6.0.6 / 5.2.15. No unreleased fixes found.
 - #27806 — More dynamic ALLOWED_HOSTS
 
 All are feature enhancements, not exploitable vulnerabilities.
+
+## Aggressive Testing Results
+
+All false positives verified. Summary of each:
+
+### CORS
+- `developers.cloudflare.com` — Access-Control-Allow-Origin: * (docs site, intentional)
+- `blog.cloudflare.com` — ACAO: https://dash.cloudflare.com (intentional)
+- `www.djangoproject.com` — ACAO: https://code.djangoproject.com (intentional, Trac integration)
+
+### Open Redirects (ALL FALSE POSITIVES)
+wordpress.org returned 302 for `?url=`, `?redirect=`, `?next=`, `?return=`, `?to=`, `?dest=`, `?target=`
+→ Verified: redirects to same page with URL-encoded param value. Not an open redirect.
+
+### Exposed Files (ALL FALSE POSITIVES)
+status.djangoproject.com returned 200 for .env, wp-config.php, config.json, dump.sql, etc.
+→ Verified: Freshping status page returns HTML for all paths (custom catch-all).
+wordpress.org/wp-config.php returned 0 bytes (empty body).
+
+### API Endpoints
+status.djangoproject.com returned 200 for /api/, /graphql, /rest/, /wp-json/
+→ Freshping catch-all (same HTML status page for all).
+developers.cloudflare.com/api/ → Cloudflare API docs, intentional.
+
+### .git Exposure
+All targets: .git/HEAD returns HTML (not git content). Not exposed.
+
+### Wayback URLs
+Gau failed on all three targets (tool error, not a finding).
+
+### GitHub Secrets
+No secrets found in recent commits of WordPress, Django, or workerd.
