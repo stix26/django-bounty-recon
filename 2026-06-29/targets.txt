@@ -1,0 +1,18 @@
+# Django In-Scope Targets
+# Source: HackerOne program scope + subfinder + manual probing
+#
+# djangoproject.com infrastructure:
+www.djangoproject.com
+docs.djangoproject.com
+code.djangoproject.com
+forum.djangoproject.com
+chat.djangoproject.com
+dashboard.djangoproject.com
+status.djangoproject.com
+people.djangoproject.com
+blog.djangoproject.com
+httpbin.djangoproject.com
+gitlab.djangoproject.com
+# Source code:
+github.com/django/django
+github.com/django/djangoproject.com
