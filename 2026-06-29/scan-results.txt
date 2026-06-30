@@ -1,0 +1,46 @@
+=== Live Targets (HTTP Status) ===
+djangoproject.com: 301
+www.djangoproject.com: 200 (nginx, Django)
+docs.djangoproject.com: 302 (redirect)
+code.djangoproject.com: 200 (Trac, Django 6.2/6.1 detected)
+forum.djangoproject.com: 200
+chat.djangoproject.com: 301 (redirect)
+dashboard.djangoproject.com: 200
+status.djangoproject.com: 200
+people.djangoproject.com: 301 (redirect)
+
+=== Nuclei Scan ===
+Django detected on: www.djangoproject.com, code.djangoproject.com, dashboard.djangoproject.com
+code.djangoproject.com version: Django 6.2, Django 6.1 (Trac instance)
+CVE templates: 0 matches found
+
+=== Security Headers (www.djangoproject.com) ===
+server: nginx
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-xss-protection: 1; mode=block
+referrer-policy: same-origin
+permissions-policy: interest-cohort=()
+
+=== Subdomains ===
+43 subdomains discovered on djangoproject.com
+Key targets: code, docs, www, forum, dashboard, status, people, blog, chat
+
+=== CVE Research ===
+Last security release: June 3, 2026 (6.0.6 and 5.2.15)
+CVEs patched: CVE-2026-6873, CVE-2026-7666, CVE-2026-8404, CVE-2026-35193, CVE-2026-48587
+All rated "low" severity. All patched.
+
+=== Open Security Tickets (Trac) ===
+No open tickets with security keywords, just feature requests
+
+=== GitHub Commit Analysis ===
+Recent security commits on main (all patched):
+- June 19: CVE-2026-35193 fix (qualified cache-control directives)
+- June 17: CVE-2026-6873 deprecation notice
+- June 11: Fixed (a)force_login() backend check (bug fix)
+- June 8-9: Cache-control + Vary header fixes
+- June 3: 5 CVEs fixed
+
+No unreleased security patches found.
